@@ -133,8 +133,8 @@ swiper {
     .right {
       flex: 1;
       > img {
-        width: 238rpx;
-        height: 188rpx;
+        width: 236rpx;
+        height: 184rpx;
         margin-left: 10rpx;
       }
     }

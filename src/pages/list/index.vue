@@ -20,9 +20,11 @@
 
     </div>
     <!-- 商品列表 -->
-    <ul class="goodsList" :style="{marginTop:isScroll?'0':'220rpx'}">
+    <ul class="goodsList"
+        :style="{marginTop:isScroll?'0':'220rpx'}">
       <li v-for="(item,index) in searchList"
-          :key="index">
+          :key="index"
+          @click="toDetail(item.goods_id)">
         <img :src="item.goods_big_logo"
              :alt="item.goods_name">
         <div class="right">
@@ -47,17 +49,19 @@ export default {
         '价格'
       ],
       activeIndex: 0,
-      keyword: '华为手机',
+      keyword: '',
       searchList: [],
       isLastPage: false,
       isScroll: false
     }
   },
   onLoad (options) {
-    console.log(options)
+    // console.log(options)
+    // 重新点击，将获取到的keyword进行渲染页面
     this.keyword = options.keyword
-    this.search()
-    this.pageNum = 1
+    // this.search()
+    // this.pageNum = 1
+    this.reload()
     this.isRequest = false
   },
   onPullDownRefresh () {
@@ -70,9 +74,15 @@ export default {
     this.search()
   },
   methods: {
+    toDetail (goodsId) {
+      // console.log(goodsId)
+      wx.navigateTo({
+        url: `/pages/item/main?goodsId=${goodsId}`
+      })
+    },
     reload () {
       this.isLastPage = false
-      this.goodsList = [] // 清空
+      this.searchList = [] // 清空
       this.pageNum = 1
       this.search()
     },
@@ -90,10 +100,13 @@ export default {
           pagenum: this.pageNum
         }
       }).then(res => {
-        console.log(res)
+        // console.log(res)
         const { message } = res.data
         this.searchList = [...this.searchList, ...message.goods]
-        if (this.searchList.length === res.total) {
+        // console.log(res.data.message.total)
+        // console.log(message.total)
+
+        if (this.searchList.length === message.total) {
           this.isLastPage = true
         }
       }).finally(() => {
@@ -170,5 +183,9 @@ export default {
       }
     }
   }
+}
+.tip {
+  text-align: center;
+  color: #ccc;
 }
 </style>

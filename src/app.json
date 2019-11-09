@@ -2,7 +2,9 @@
   "pages": [
     "pages/index/main",
     "pages/list/main",
+    "pages/item/main",
     "pages/cart/main",
+    "pages/pay/main",
     "pages/category/main",
     "pages/mine/main"],
   "window": {

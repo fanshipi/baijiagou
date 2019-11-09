@@ -4,7 +4,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 .text-line2 {
   display: -webkit-box;
   overflow: hidden;
@@ -12,4 +12,5 @@ export default {
   -webkit-box-orient:vertical;
   text-overflow: ellipsis;
 }
+@import url('../src/css/iconfont.css');
 </style>
