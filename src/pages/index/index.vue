@@ -1,6 +1,6 @@
 <template>
   <div>
-    <search />
+    <searchHotsPot />
     <!-- swiper -->
     <swiper indicator-dots
             autoplay
@@ -46,10 +46,10 @@
 </template>
 
 <script>
-import search from '../../components/search'
+import searchHotsPot from '@/components/searchHotpot'
 export default {
   components: {
-    search
+    searchHotsPot
   },
   data () {
     return {
@@ -98,7 +98,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 swiper {
   margin-top: -2rpx;
   img {

@@ -6,6 +6,8 @@
     "pages/cart/main",
     "pages/pay/main",
     "pages/category/main",
+    "pages/login/main",
+    "pages/search/main",
     "pages/mine/main"],
   "window": {
     "backgroundTextStyle": "light",

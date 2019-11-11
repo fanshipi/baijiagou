@@ -111,6 +111,13 @@ export default {
         this.$showToast('请添加商品')
         return
       }
+      // let token = wx.getStorageSync('token')
+      // if (!token) {
+      //   wx.navigateTo({
+      //     url: '/pages/login/main'
+      //   })
+      //   return
+      // }
       wx.navigateTo({
         url: '/pages/pay/main'
       })

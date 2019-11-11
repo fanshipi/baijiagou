@@ -1,39 +1,70 @@
 <template>
-  <div class="search">
-    <div class="content">
-      <icon type="search"
-            size="18"></icon>
-      <span>搜索</span>
-    </div>
+  <div class="header">
+    <input type="text"
+           confirm-type="search"
+           @confirm="confirmHandler"
+           v-model="keyword">
+    <icon class="search-icon"
+          type="search"
+          size="16"></icon>
+    <icon class="clear-icon"
+          type="clear"
+          size="16"
+          color="#ccc"
+          v-show="keyword"
+          @click="keyword=''"></icon>
   </div>
 </template>
 
 <script>
-export default {
 
+export default {
+  props: ['query'],
+  data () {
+    return {
+      keyword: this.query
+    }
+  },
+  methods: {
+    // 传值给父组件
+    confirmHandler () {
+      if (this.keyword) {
+        this.$emit('confirm', this.keyword)
+      }
+    }
+  },
+  watch: {
+    query (newValue) {
+      this.keyword = newValue
+    }
+  }
 }
 </script>
 
-<style lang="less">
-.search {
-  width: 100%;
-  height: 100rpx;
-  background-color: #f10215;
-  box-sizing: border-box;
-  .content {
-    margin: 0 16rpx;
-    height: 76%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 10rpx;
-    width: 96%;
-    font-size: 28rpx;
+<style lang="less" scoped>
+.header {
+  height: 120rpx;
+  background-color: #eee;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  input {
     background-color: #fff;
-    icon {
-      color: #bbb;
-      margin-right: 16rpx;
-    }
+    height: 60rpx;
+    width: 720rpx;
+    padding-left: 74rpx;
+    box-sizing: border-box;
+  }
+  .search-icon {
+    position: absolute;
+    left: 44rpx;
+  }
+
+  .clear-icon {
+    position: absolute;
+    right: 44rpx;
+    z-index: 100;
   }
 }
 </style>

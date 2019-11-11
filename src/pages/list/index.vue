@@ -2,14 +2,16 @@
   <div>
     <div class="header"
          :style="{position:isScroll?'static':'fixed'}">
-      <div class="search">
+      <!-- <div class="search">
         <icon type="search"
               size="18"></icon>
         <input type="text"
                v-model="keyword"
                confirm-type="search"
                @confirm="reload">
-      </div>
+      </div> -->
+      <Search :query="keyword"
+              @confirm='inputHandle' />
       <!-- 导航 -->
       <ul class="nav">
         <li v-for="(item,index) in navArr"
@@ -39,8 +41,12 @@
 </template>
 
 <script>
+import Search from '@/components/search'
 const PAFE_SIZE = 6
 export default {
+  components: {
+    Search
+  },
   data () {
     return {
       navArr: [
@@ -79,6 +85,11 @@ export default {
       wx.navigateTo({
         url: `/pages/item/main?goodsId=${goodsId}`
       })
+    },
+    inputHandle (value) {
+      // console.log(value)
+      this.keyword = value
+      this.reload()
     },
     reload () {
       this.isLastPage = false

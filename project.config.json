@@ -74,6 +74,19 @@
 					"pathName": "pages/cart/main",
 					"query": "goodsId=43982",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/main",
+					"pathName": "pages/index/main",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/search/main",
+					"pathName": "pages/search/main",
+					"scene": null
 				}
 			]
 		}
